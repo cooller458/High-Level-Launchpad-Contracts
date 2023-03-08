@@ -20,7 +20,7 @@ module.exports = {
         },
         testBSC: {
             // must be a thunk, otherwise truffle commands may hang in CI
-            provider: () => new HDWalletProvider("1790aa2f2d79c47a640082158d6061b773b236db7a3b288902f1b0086455b559", "https://data-seed-prebsc-1-s1.binance.org:8545/"),
+            provider: () => new HDWalletProvider("", "https://data-seed-prebsc-1-s1.binance.org:8545/"),
             network_id: 97,
             from: "0xb58967989C8e878de4D7e78965e066F26B2d9bF4",
             skipDryRun: true
