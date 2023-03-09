@@ -36,7 +36,7 @@ module.exports = {
         },
         AvaxTestnet: {
             // must be a thunk, otherwise truffle commands may hang in CI
-            provider: () => new HDWalletProvider("1790aa2f2d79c47a640082158d6061b773b236db7a3b288902f1b0086455b559", "https://api.avax-test.network/ext/bc/C/rpc"),
+            provider: () => new HDWalletProvider("", "https://api.avax-test.network/ext/bc/C/rpc"),
             network_id: "43113",
             from: "0xb58967989C8e878de4D7e78965e066F26B2d9bF4",
             skipDryRun: true,
@@ -70,7 +70,7 @@ module.exports = {
     },
     plugins: ['truffle-plugin-verify'],
     api_keys: {
-        bscscan: 'QTU498KHG8T1HHQQKDFKA82D2DUZ54R3U3',
+        bscscan: '',
       },
     mocha: {
         useColors: true,

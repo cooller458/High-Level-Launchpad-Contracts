@@ -7,7 +7,7 @@ contract Whitelist is Ownable {
     mapping(address => bool) public whitelist;
 
 
-     address[] public whitelistedAddresses;
+    address[] public whitelistedAddresses;
     bool public hasWhitelisting = false;
 
     event AddedToWhitelist(address account);

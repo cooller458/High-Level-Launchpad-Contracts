@@ -250,7 +250,6 @@ import "./interfaces/ITierSystem.sol";
 
         emit VestingCreated(beneficiary, amount);
     }
-
      function release(address beneficiary) external nonReentrant {
         uint256 unreleased = releasableAmount(beneficiary);
         require(unreleased > 0, "Nothing to release");
@@ -285,4 +284,18 @@ import "./interfaces/ITierSystem.sol";
             return totalBalance.mul(numberOfInvervals).div(totalIntervals);
         }
     }
+
+    function numberOfIntervals() public view returns (uint256) {
+        return block.timestamp.sub(vestingStart).div(vestingInterval);
+    }
+
+    function numberOfInterval() public view returns(uint256) {
+        Vesting memory vest = _vestings[beneficiary];
+        uint256 currentBalance = vest.balance;
+        uint256 totalBalance = currentBalance.add(vest.released);
+        uint256 numberOfInvervals = block.timestamp.sub(vestingStart).div(vestingInterval);
+        uint256 totalIntervals = vestingDuration.div(vestingInterval);
+        return totalIntervals;
+    }
+
 }

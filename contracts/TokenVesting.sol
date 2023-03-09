@@ -31,6 +31,8 @@ contract TokenVesting is Context , ReentrancyGuard {
         uint256 balance;
         uint256 released;
     }
+
+    uint256[] public dates;
     
 
     mapping(address => Vesting) private _vestings;
@@ -95,5 +97,15 @@ contract TokenVesting is Context , ReentrancyGuard {
 
             return totalBalance.mul(numberOfIntervals).div(totalIntervals);
         }
+    }
+
+    function vestingDateArray(address beneficiary) public view returns (uint256[] memory) {
+        Vesting memory vest = _vestings[beneficiary];
+        uint256 numberOfIntervals = vest.duration.div(vest.interval);
+        uint256[] memory dates = new uint256[](numberOfIntervals);
+        for (uint256 i = 0; i < numberOfIntervals; i++) {
+            dates[i] = vest.start.add(vest.interval.mul(i));
+        }
+        return dates;
     }
 }
